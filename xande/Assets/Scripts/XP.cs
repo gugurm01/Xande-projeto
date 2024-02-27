@@ -23,14 +23,16 @@ public class XP : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        switch(collision.tag)
         {
-            Destroy(gameObject);
-        }
-        if (collision.CompareTag("Magnetic"))
-        {
-            posPlayer = collision.transform;
-            isMagnetized = true;
+            case "Player":
+
+                break;
+
+            case "Magnetic":
+                posPlayer = collision.transform;
+                isMagnetized = true;
+                break;
         }
     }
 }
