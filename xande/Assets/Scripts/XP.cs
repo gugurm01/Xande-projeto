@@ -24,13 +24,12 @@ public class XP : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        switch(collision.tag)
+        switch (collision.tag)
         {
             case "Player":
-                Destroy(gameObject);
                 PlayerStats.GainXp(collision.GetComponent<PlayerStats>(), xpGain);
+                Destroy(gameObject);
                 break;
-
             case "Magnetic":
                 posPlayer = collision.transform;
                 isMagnetized = true;
