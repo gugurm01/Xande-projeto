@@ -10,9 +10,11 @@ public class PlayerMoviment : MonoBehaviour
     float vertical;
 
     public Transform weapon;
+    public static Transform playerPosition;
     float direction;
     void Start()
     {
+        playerPosition = transform;
         body = GetComponent<Rigidbody2D>();
     }
 
