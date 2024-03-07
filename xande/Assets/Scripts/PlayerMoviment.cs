@@ -29,6 +29,8 @@ public class PlayerMoviment : MonoBehaviour
             direction = horizontal;
         }
         weapon.localScale = new Vector2 (direction, weapon.localScale.y);
+
+        
     }
 
     private void FixedUpdate()

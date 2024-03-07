@@ -15,4 +15,17 @@ public abstract class Enemy : MonoBehaviour
     {
         rb2d.velocity = (PlayerMoviment.playerPosition.position - transform.position) * speed/10;
     }
+
+    public void TakeDamage(int damage)
+    {
+        life -= damage;
+        if(life <= 0)
+        {
+            if(Random.Range(0,100) <= 25)
+            {
+                Instantiate(xp,transform.position, transform.rotation);
+            }
+            Destroy(gameObject);
+        }
+    }
 }
