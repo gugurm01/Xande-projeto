@@ -6,7 +6,7 @@ public class Pentagram : MonoBehaviour
 {
     BoxCollider2D collisor2D;
     SpriteRenderer spriteRenderer;
-    public int destroyChance;
+    public int notDestroyChance;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,12 +21,24 @@ public class Pentagram : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        /*
-        if(Random.Range(0, 100) <= destroyChance)
+        switch (collision.tag)
         {
-            Destroy(collisor2D.gameObject);
+            case "Enemy":
+                Enemy enemy = collision.GetComponent<Enemy>();
+                enemy.TakeDamage(enemy.life);
+                break;
+            case "XP":
+                if (Random.Range(0, 100) <= notDestroyChance)
+                {
+                    Destroy(collision.gameObject);
+                }
+                break;
         }
-        */
+        if(Random.Range(0, 100) <= notDestroyChance)
+        {
+            Destroy(collision.gameObject);
+        }
+ 
     }
 
     public void PentagramEnds()

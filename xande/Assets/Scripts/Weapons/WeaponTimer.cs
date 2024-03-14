@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class WeaponTimer : MonoBehaviour
 {
-    public GameObject weapon;
+    public UnityEvent OnTimerAttack;
+
+    //public GameObject weapon;
     public float timerToActivate;
 
     float timer;
@@ -36,6 +39,7 @@ public class WeaponTimer : MonoBehaviour
 
     private void ActiveWeapon()
     {
-        weapon.SetActive(true);
+        OnTimerAttack.Invoke();
+        //weapon.SetActive(true);
     }
 }

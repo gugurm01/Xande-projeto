@@ -10,6 +10,7 @@ public abstract class Enemy : MonoBehaviour
     public float speed;
     protected Rigidbody2D rb2d;
     public GameObject xp;
+    public bool garliczed;
 
     public void Move()
     {
@@ -28,4 +29,5 @@ public abstract class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 }
