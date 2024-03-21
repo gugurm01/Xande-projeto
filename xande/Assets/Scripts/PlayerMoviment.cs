@@ -10,30 +10,27 @@ public class PlayerMoviment : MonoBehaviour
     float vertical;
 
     public Transform weapon;
-    public static Transform playerPosition;
+    public static Transform posPlayer;
     float direction;
+    // Start is called before the first frame update
     void Start()
     {
-        playerPosition = transform;
+        posPlayer = transform;
         body = GetComponent<Rigidbody2D>();
     }
 
-
-    void Update()
+    // Update is called once per frame
+    void Update()//Atualiza de acordo com a capacidade do computador
     {
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
-
-        if (horizontal != 0) 
+        if(horizontal != 0)
         {
             direction = horizontal;
         }
         weapon.localScale = new Vector2 (direction, weapon.localScale.y);
-
-        
     }
-
-    private void FixedUpdate()
+    private void FixedUpdate()//Atualiza numa taxa fixa
     {
         body.velocity = new Vector2(horizontal * speed, vertical * speed);
     }
