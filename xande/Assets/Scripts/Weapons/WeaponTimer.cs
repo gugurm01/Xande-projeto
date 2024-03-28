@@ -6,28 +6,27 @@ using UnityEngine.Events;
 public class WeaponTimer : MonoBehaviour
 {
     public UnityEvent OnTimerAttack;
-
     //public GameObject weapon;
     public float timerToActivate;
 
     float timer;
-    // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(Activate());
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         /*
         timer += Time.deltaTime;
-        if (timer > timerToActivate)
+        if (timer >= timerToActivate) 
         {
             ActiveWeapon();
             timer = 0;
         }
         */
+
     }
 
     IEnumerator Activate()
@@ -37,9 +36,9 @@ public class WeaponTimer : MonoBehaviour
         StartCoroutine(Activate());
     }
 
-    private void ActiveWeapon()
+    void ActiveWeapon()
     {
-        OnTimerAttack.Invoke();
         //weapon.SetActive(true);
+        OnTimerAttack.Invoke();
     }
 }

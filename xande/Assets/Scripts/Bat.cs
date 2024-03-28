@@ -13,6 +13,6 @@ public class Bat : Enemy
     // Update is called once per frame
     void Update()
     {
-        Moviment();
+        Movement();
     }
 }

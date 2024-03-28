@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build;
 using UnityEngine;
 
 public class PlayerMoviment : MonoBehaviour
@@ -12,25 +13,27 @@ public class PlayerMoviment : MonoBehaviour
     public Transform weapon;
     public static Transform posPlayer;
     float direction;
-    // Start is called before the first frame update
     void Start()
     {
+
         posPlayer = transform;
         body = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()//Atualiza de acordo com a capacidade do computador
+
+    void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
-        if(horizontal != 0)
+
+        if (horizontal != 0) 
         {
             direction = horizontal;
         }
         weapon.localScale = new Vector2 (direction, weapon.localScale.y);
     }
-    private void FixedUpdate()//Atualiza numa taxa fixa
+
+    private void FixedUpdate()
     {
         body.velocity = new Vector2(horizontal * speed, vertical * speed);
     }

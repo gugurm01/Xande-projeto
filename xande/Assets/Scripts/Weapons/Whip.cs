@@ -1,18 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
 
 public class Whip : MonoBehaviour
 {
     public int damageMin, damageMax;
-    // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -24,12 +21,18 @@ public class Whip : MonoBehaviour
         {
             int finalDamage = Random.Range(damageMin, damageMax + 1);
 
-            if(Random.Range(0, 100) <= 20)
+            if (Random.Range(0, 100) <= 20)
             {
-                finalDamage *= 2;
+                collision.GetComponent<Enemy>().TakeDamage(finalDamage * 2);
+                print("critico");
             }
-            collision.GetComponent<Enemy>().TakeDamage(finalDamage);
-            
+            else
+            {
+                collision.GetComponent<Enemy>().TakeDamage(finalDamage);
+            }
+
+            print(finalDamage);
         }
     }
+
 }

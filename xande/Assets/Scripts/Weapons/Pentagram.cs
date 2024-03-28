@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class Pentagram : MonoBehaviour
 {
-    BoxCollider2D collisor2D;
-    SpriteRenderer spriteRenderer;
-    public int notDestroyChance;
-    // Start is called before the first frame update
+    BoxCollider2D collisor;
+    SpriteRenderer spriteR;
+    public int destroyChance;
     void Start()
     {
-        collisor2D = GetComponent<BoxCollider2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        collisor = GetComponent<BoxCollider2D>();
+        spriteR = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         switch (collision.tag)
@@ -28,17 +28,13 @@ public class Pentagram : MonoBehaviour
                 enemy.TakeDamage(enemy.life);
                 break;
             case "XP":
-                if (Random.Range(0, 100) <= notDestroyChance)
+                if (Random.Range(0, 100) <= destroyChance)
                 {
                     Destroy(collision.gameObject);
                 }
                 break;
         }
-        if(Random.Range(0, 100) <= notDestroyChance)
-        {
-            Destroy(collision.gameObject);
-        }
- 
+        
     }
 
     public void PentagramEnds()
